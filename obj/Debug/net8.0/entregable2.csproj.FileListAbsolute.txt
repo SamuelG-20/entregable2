@@ -1,0 +1,14 @@
+C:\Users\Samuel\Documents\proyectos\entregable2\bin\Debug\net8.0\entregable2.exe
+C:\Users\Samuel\Documents\proyectos\entregable2\bin\Debug\net8.0\entregable2.deps.json
+C:\Users\Samuel\Documents\proyectos\entregable2\bin\Debug\net8.0\entregable2.runtimeconfig.json
+C:\Users\Samuel\Documents\proyectos\entregable2\bin\Debug\net8.0\entregable2.dll
+C:\Users\Samuel\Documents\proyectos\entregable2\bin\Debug\net8.0\entregable2.pdb
+C:\Users\Samuel\Documents\proyectos\entregable2\obj\Debug\net8.0\entregable2.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Samuel\Documents\proyectos\entregable2\obj\Debug\net8.0\entregable2.AssemblyInfoInputs.cache
+C:\Users\Samuel\Documents\proyectos\entregable2\obj\Debug\net8.0\entregable2.AssemblyInfo.cs
+C:\Users\Samuel\Documents\proyectos\entregable2\obj\Debug\net8.0\entregable2.csproj.CoreCompileInputs.cache
+C:\Users\Samuel\Documents\proyectos\entregable2\obj\Debug\net8.0\entregable2.dll
+C:\Users\Samuel\Documents\proyectos\entregable2\obj\Debug\net8.0\refint\entregable2.dll
+C:\Users\Samuel\Documents\proyectos\entregable2\obj\Debug\net8.0\entregable2.pdb
+C:\Users\Samuel\Documents\proyectos\entregable2\obj\Debug\net8.0\entregable2.genruntimeconfig.cache
+C:\Users\Samuel\Documents\proyectos\entregable2\obj\Debug\net8.0\ref\entregable2.dll

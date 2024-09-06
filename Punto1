@@ -1,0 +1,160 @@
+﻿//SAMUEL ESTEBAN GUEVARA CARDENAS - 1001016737
+
+interface IPokemoncito
+{
+    int Atacar();
+    double Defender();
+}
+
+abstract class PokemonC : IPokemoncito
+{
+    private string nombre;
+    private string tipo;
+    private int[] ataques;
+    private int defensa;
+
+    public PokemonC(string nombre, string tipo, int[] ataques, int defensa)
+    {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.ataques = ataques;
+        this.defensa = defensa;
+    }
+
+    public string Nombre { get { return nombre; } }
+    public string Tipo { get { return tipo; } }
+
+    public abstract int Atacar();
+    public abstract double Defender();
+
+    protected int SeleccionarAtaque()
+    {
+        Random random = new Random();
+        int indice = random.Next(ataques.Length);
+        return ataques[indice];
+    }
+
+    protected int DefensaBase { get { return defensa; } }
+}
+
+class Pokemon : PokemonC
+{
+    public Pokemon(string nombre, string tipo, int[] ataques, int defensa)
+        : base(nombre, tipo, ataques, defensa)
+    {
+    }
+
+    public override int Atacar()
+    {
+        Random random = new Random();
+        int ataqueSeleccionado = SeleccionarAtaque();
+        int multiplicador = random.Next(2);
+        return ataqueSeleccionado * multiplicador;
+    }
+
+    public override double Defender()
+    {
+        Random random = new Random();
+        double valorAleatorio = random.NextDouble();
+        double multiplicador;
+
+        if (valorAleatorio > 0.5)
+        {
+            multiplicador = 1;
+        }
+        else
+        {
+            multiplicador = 0.5;
+        }
+
+        return DefensaBase * multiplicador;
+    }
+}
+
+class PeleaPokemones
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine();
+        Console.WriteLine("Hola, esta es la pelea entre dos pokemones, por favor siga las instrucciones que se le daran");
+        Console.WriteLine();
+
+        Console.WriteLine("Ingrese los siguientes datos para el primer pokemon");
+        Pokemon pokemon1 = CrearPokemon();
+        Console.WriteLine();
+
+        Console.WriteLine("Ingrese los siguientes datos para el segundo pokemon");
+        Pokemon pokemon2 = CrearPokemon();
+        Console.WriteLine();
+
+        int puntosPokemon1 = 0;
+        int puntosPokemon2 = 0;
+
+        for (int i = 0; i < 3; i++)
+        {
+            Console.WriteLine("---------ROUND " + (i + 1) + "---------");
+
+            int ataque1 = pokemon1.Atacar();
+            double defensa2 = pokemon2.Defender();
+            Console.WriteLine(pokemon1.Nombre + " se ataca con " + ataque1);
+            Console.WriteLine(pokemon2.Nombre + " se defiende con " + defensa2);
+            Console.WriteLine();
+
+            if (ataque1 > defensa2)
+                puntosPokemon1++;
+            else if (ataque1 < defensa2)
+                puntosPokemon2++;
+
+
+
+            int ataque2 = pokemon2.Atacar();
+            double defensa1 = pokemon1.Defender();
+            Console.WriteLine(pokemon2.Nombre + " se ataca con " + ataque2);
+            Console.WriteLine(pokemon1.Nombre + " se defiende con " + defensa1);
+            Console.WriteLine();
+
+            if (ataque2 > defensa1)
+                puntosPokemon2++;
+            else if (ataque2 < defensa1)
+                puntosPokemon1++;
+
+        }
+
+        Console.WriteLine("-------CONTEO DE PUNTOS-------");
+        Console.WriteLine("Puntos de " + pokemon1.Nombre + ": " + puntosPokemon1);
+        Console.WriteLine("Puntos de " + pokemon2.Nombre + ": " + puntosPokemon2);
+        Console.WriteLine();
+
+        if (puntosPokemon1 > puntosPokemon2)
+            Console.WriteLine(pokemon1.Nombre + " ha ganado la pelea");
+        else if (puntosPokemon1 < puntosPokemon2)
+            Console.WriteLine(pokemon2.Nombre + " ha ganado la pelea");
+        else
+            Console.WriteLine("La pelea ha quedado en empate.");
+    }
+
+    static Pokemon CrearPokemon()
+    {
+        Console.Write("Nombre del pokemon: ");
+        string nombre = Console.ReadLine();
+        Console.WriteLine();
+
+        Console.Write("Tipo de pokemon: ");
+        string tipo = Console.ReadLine();
+        Console.WriteLine();
+
+        int[] ataques = new int[3];
+        for (int i = 0; i < 3; i++)
+        {
+            Console.Write("Ingrese el valor del ataque " + (i + 1) + " entre (0-40): ");
+            ataques[i] = int.Parse(Console.ReadLine());
+        }
+
+        Console.Write("Ingrese el valor de la defensa entre (10-35): ");
+        int defensa = int.Parse(Console.ReadLine());
+        
+        Console.WriteLine();
+
+        return new Pokemon(nombre, tipo, ataques, defensa);
+    }
+}
